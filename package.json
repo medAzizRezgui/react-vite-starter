@@ -1,0 +1,89 @@
+{
+	"name": "react-vite-starter",
+	"private": true,
+	"version": "0.0.0",
+	"type": "module",
+	"scripts": {
+		"dev": "vite",
+		"build": "tsc -b && vite build",
+		"lint": "eslint .",
+		"preview": "vite preview",
+		"prepare": "husky",
+		"commit": "npx git-cz"
+	},
+	"lint-staged": {
+		"*.{js,ts,tsx,jsx}": [
+			"eslint --max-warnings=2 --fix .",
+			"prettier --write"
+		]
+	},
+	"config": {
+		"commitizen": {
+			"path": "cz-conventional-changelog-emoji"
+		}
+	},
+	"husky": {
+		"hooks": {
+			"pre-commit": "lint-staged"
+		}
+	},
+	"dependencies": {
+		"@radix-ui/react-label": "^2.1.2",
+		"@radix-ui/react-popover": "^1.1.6",
+		"@radix-ui/react-select": "^2.1.6",
+		"@radix-ui/react-separator": "^1.1.2",
+		"@radix-ui/react-slot": "^1.1.2",
+		"@radix-ui/react-tooltip": "^1.1.8",
+		"@tailwindcss/vite": "^4.1.3",
+		"@tanstack/react-query": "^5.71.10",
+		"axios": "^1.8.4",
+		"class-variance-authority": "^0.7.1",
+		"clsx": "^2.1.1",
+		"framer-motion": "^12.6.3",
+		"lucide-react": "^0.487.0",
+		"nuqs": "^2.4.1",
+		"react": "^19.0.0",
+		"react-dom": "^19.0.0",
+		"react-router": "^7.5.0",
+		"react-router-dom": "^7.5.0",
+		"tailwind-merge": "^3.1.0",
+		"tailwindcss": "^4.1.3",
+		"vite-tsconfig-paths": "^5.1.4",
+		"tw-animate-css": "^1.2.5"
+	},
+	"devDependencies": {
+		"@commitlint/cli": "^19.8.0",
+		"@commitlint/config-conventional": "^19.8.0",
+		"@eslint/js": "^9.21.0",
+		"@tanstack/eslint-plugin-query": "^5.71.5",
+		"@types/node": "^22.14.0",
+		"@types/react": "^19.0.10",
+		"@types/react-dom": "^19.0.4",
+		"@typescript-eslint/eslint-plugin": "^8.26.1",
+		"@typescript-eslint/parser": "^8.26.1",
+		"@vitejs/plugin-react": "^4.3.4",
+		"eslint": "^9.21.0",
+		"eslint-plugin-react-hooks": "^5.1.0",
+		"eslint-plugin-react-refresh": "^0.4.19",
+		"eslint-plugin-simple-import-sort": "^12.1.1",
+		"globals": "^15.15.0",
+		"husky": "^9.1.7",
+		"lint-staged": "^15.5.0",
+		"msw": "^2.7.3",
+		"prettier": "^3.5.3",
+		"prettier-plugin-tailwindcss": "^0.6.11",
+		"typescript": "~5.7.2",
+		"typescript-eslint": "^8.24.1",
+		"vite": "6.2.6"
+	},
+	"pnpm": {
+		"ignoredBuiltDependencies": [
+			"esbuild"
+		]
+	},
+	"msw": {
+		"workerDirectory": [
+			"public"
+		]
+	}
+}

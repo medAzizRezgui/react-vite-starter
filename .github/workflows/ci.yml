@@ -1,0 +1,40 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build-and-test: # JOB ID
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [20]
+
+    steps:
+      # 1. Check out the repository
+      - uses: actions/checkout@v4
+      # 2. Installs pnpm
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      #3. Set up Node.js and enable pnpm
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'pnpm' # activates pnpm store caching
+
+      # 4. Install dependencies via pnpm
+      - name: Install dependencies
+        run: pnpm install
+
+      # 5. Run lint, tests, and build
+      - name: Lint code
+        run: pnpm lint-staged --concurrent false
+      - name: Build production bundle
+        run: pnpm run build
